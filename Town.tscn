@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Egg.tscn" type="PackedScene" id=1]
+[ext_resource path="res://evo.tscn" type="PackedScene" id=2]
+
+[node name="Town" type="Node"]
+
+[node name="StartPoint" type="Position2D" parent="."]
+position = Vector2( 368, 429 )
+
+[node name="evo" parent="." instance=ExtResource( 2 )]
+position = Vector2( 449, 368.25 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="Egg" parent="." instance=ExtResource( 1 )]
