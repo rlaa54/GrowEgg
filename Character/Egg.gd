@@ -42,12 +42,6 @@ func _process(delta):
 	if evolution_Gauage == 100:
 		evolution_Gauage = 0
 		current_hp = MAX_HP
-	
-func attack():
-	var attackarea = CollisionShape2D.new()
-	attackarea.draw_rect()
-	attackarea.position()
-
 
 func _on_Egg_body_entered(body):
 	emit_signal("hit")
