@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-export (PackedScene) var parts_scene
 export var speed = 400
 
 signal hit
@@ -10,6 +9,7 @@ var screen_size
 var evolution_Gauage = 0
 var current_hp
 var MAX_HP
+var direction_arrow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +36,8 @@ func _process(delta):
 	var facing = get_global_mouse_position()
 	
 	$Direction2.look_at(facing)
-	var rotPosition = position.direction_to(facing) * radius
+	direction_arrow = position.direction_to(facing)
+	var rotPosition = direction_arrow * radius
 	$Direction2.position = rotPosition
 	
 	if evolution_Gauage == 100:
