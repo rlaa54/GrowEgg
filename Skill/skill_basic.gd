@@ -15,9 +15,9 @@ func _ready():
 #	pass
 
 func active():
-	pass
 	var skill_direction = position.direction_to(get_global_mouse_position())
 	hitbox = $hitbox
 	hitbox_shape = RectangleShape2D.new()
 	hitbox_shape.extents = Vector2(3, 2)
 	hitbox.shape = hitbox_shape
+	
