@@ -10,10 +10,18 @@ var evolution_Gauage = 0
 var current_hp
 var MAX_HP
 var direction_arrow
+var current_skill
+var skill_slot
+
+func initialize_skill_slots():
+	skill_slot = [$Skill1, $Skill2, $Skill3]
+	skill_slot[0].set_script(load("res://Skill/skill_basic.gd"))
+	current_skill = skill_slot[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	initialize_skill_slots()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -39,6 +47,10 @@ func _process(delta):
 	direction_arrow = position.direction_to(facing)
 	var rotPosition = direction_arrow * radius
 	$Direction2.position = rotPosition
+	
+	
+	if Input.is_action_pressed("active"):
+		current_skill.active()
 	
 	if evolution_Gauage == 100:
 		evolution_Gauage = 0
