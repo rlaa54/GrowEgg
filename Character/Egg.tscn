@@ -19,7 +19,7 @@ radius = 17.0
 height = 12.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 19.8333, 24 )
+extents = Vector2( 17.7396, 24 )
 
 [node name="Egg" type="KinematicBody2D"]
 position = Vector2( 233, 195 )
@@ -46,7 +46,7 @@ collision_mask = 4
 script = ExtResource( 3 )
 
 [node name="pickupbox" type="CollisionShape2D" parent="PickupZone"]
-position = Vector2( -1.33334, 1.33334 )
+position = Vector2( -0.40625, 2.66669 )
 shape = SubResource( 3 )
 
 [node name="Skill1" parent="." instance=ExtResource( 1 )]
