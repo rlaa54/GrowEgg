@@ -2,8 +2,7 @@ extends KinematicBody2D
 
 export var speed = 400
 
-signal hit
-signal eat
+signal hurt
 
 var screen_size
 var evolution_Gauage = 0
@@ -17,12 +16,8 @@ func initialize_skill_slots():
 	skill_slot = [$Skill1, $Skill2, $Skill3]
 	
 func initialize_skill_with_script(slot_index, script_path):
-	print("before connect")
 	skill_slot[slot_index].connect("skill_initialize", skill_slot[slot_index], "skill_init")
-	print("after connect")
-	print("before set script")
-	skill_slot[slot_index].set_script(load(script_path))
-	print("after set script")
+	skill_slot[slot_index].set_script(load(script_path))	
 	
 func skill_select(slot_index):
 	current_skill = skill_slot[slot_index]
@@ -63,10 +58,12 @@ func _process(delta):
 	
 	if Input.is_action_just_released("skill_select1"):
 		skill_select(0)
-	
+	if Input.is_action_just_released("skill_select2"):
+		skill_select(1)
+		
 	if evolution_Gauage == 100:
 		evolution_Gauage = 0
 		current_hp = MAX_HP
 
 func _on_Egg_body_entered(body):
-	emit_signal("hit")
+	emit_signal("hurt")

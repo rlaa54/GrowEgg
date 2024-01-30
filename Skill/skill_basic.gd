@@ -1,9 +1,7 @@
 extends "res://Skill/Skill.gd"
 
 func _init():
-	print("before signal")
 	emit_signal("skill_initialize")
-	print("after signal")
 	
 func skill_init():
 	set_skill_owner(self)
@@ -15,7 +13,7 @@ func skill_init():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("skill_basic_ready")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -26,3 +24,7 @@ func skill_active():
 	hitbox.shape = hitbox_shape
 	set_skill_position(get_skill_direction() * get_skill_range())
 	position = get_skill_position()
+	
+	#hitbox.disabled = false
+	# some animation work
+	#hitbox.disabled = true

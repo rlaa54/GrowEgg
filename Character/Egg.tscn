@@ -14,17 +14,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 17.7396, 24 )
+
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 17.0
 height = 12.0
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 17.7396, 24 )
-
 [node name="Egg" type="KinematicBody2D"]
 position = Vector2( 233, 195 )
 scale = Vector2( 0.75, 0.75 )
-collision_mask = 0
 script = ExtResource( 2 )
 speed = 300
 
@@ -37,11 +36,8 @@ animation = "idle"
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
 
-[node name="HurtBox" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 3 )
-shape = SubResource( 2 )
-
 [node name="PickupZone" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 4
 script = ExtResource( 3 )
 
@@ -54,5 +50,9 @@ shape = SubResource( 3 )
 [node name="Skill2" parent="." instance=ExtResource( 1 )]
 
 [node name="Skill3" parent="." instance=ExtResource( 1 )]
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 3 )
+shape = SubResource( 2 )
 
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]

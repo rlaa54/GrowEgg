@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var item_name
+var item_type
 var MAX_SPEED = 225
 var ACCELERATION = 400
 var velocity = Vector2.ZERO
@@ -18,10 +19,9 @@ func _physics_process(delta):
 		var direction = global_position.direction_to(player.global_position)
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 		
-		#var distance = global_position.distance_to(player.global_position)
-		#if distance < 20:
-		#print("distance:", distance)
-		queue_free()
+		var distance = global_position.distance_to(player.global_position)
+		if distance < 20:
+			queue_free()
 	velocity = move_and_slide(velocity, Vector2.UP)
 		
 func pick_up_item(body):
